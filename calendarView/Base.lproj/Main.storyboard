@@ -22,9 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="b4cc992cc8fc45a4eda5ccac4af34fa4_flowers-flower-clipart-green-flower-clipart-free-png_777-800" translatesAutoresizingMaskIntoConstraints="NO" id="zGx-yq-8yc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HOK-Cx-ZoJ">
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="DBg-IL-Rds">
                                     <size key="itemSize" width="101" height="103"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -59,32 +63,61 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="CategoryMonthHeader" id="bW6-gb-hqm" customClass="CategoryMonthHeader" customModule="calendarView" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" tag="1" contentMode="center" reuseIdentifier="CategoryMonthHeader" id="bW6-gb-hqm" customClass="CategoryMonthHeader" customModule="calendarView" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.92422693060000005" green="0.92422693060000005" blue="0.92422693060000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <gestureRecognizers/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="iDH-Ta-hdK" appends="YES" id="EDk-li-Yi6"/>
+                                        <outletCollection property="gestureRecognizers" destination="hYw-Fy-euz" appends="YES" id="bzt-An-qyE"/>
+                                        <outletCollection property="gestureRecognizers" destination="iDH-Ta-hdK" appends="YES" id="ei8-NG-yuq"/>
+                                    </connections>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="3ZH-z3-55h"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="weR-GK-Z79"/>
+                                    <outletCollection property="gestureRecognizers" destination="iDH-Ta-hdK" appends="YES" id="mcA-dr-nsU"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HOK-Cx-ZoJ" secondAttribute="bottom" id="3s4-BV-wsE"/>
                             <constraint firstItem="HOK-Cx-ZoJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CG0-fB-f4S"/>
+                            <constraint firstItem="zGx-yq-8yc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Kup-1g-gUA"/>
                             <constraint firstItem="HOK-Cx-ZoJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TUN-MN-Awp"/>
+                            <constraint firstItem="zGx-yq-8yc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uag-yF-neA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zGx-yq-8yc" secondAttribute="bottom" id="ZIa-f1-HTK"/>
+                            <constraint firstAttribute="trailing" secondItem="zGx-yq-8yc" secondAttribute="trailing" id="d0p-fe-9y6"/>
                             <constraint firstAttribute="trailing" secondItem="HOK-Cx-ZoJ" secondAttribute="trailing" id="kRE-lq-0MQ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hYw-Fy-euz" appends="YES" id="vpm-Dp-zwG"/>
+                            <outletCollection property="gestureRecognizers" destination="iDH-Ta-hdK" appends="YES" id="QVH-C6-pHG"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="HOK-Cx-ZoJ" id="MRx-jv-1Le"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="hYw-Fy-euz">
+                    <connections>
+                        <action selector="rightSwipe:" destination="BYZ-38-t0r" id="CNe-Yw-55k"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="iDH-Ta-hdK">
+                    <connections>
+                        <action selector="leftSwipe:" destination="BYZ-38-t0r" id="msv-eb-hYY"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="318.75" y="13.75"/>
+            <point key="canvasLocation" x="273.75" y="-65"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="b4cc992cc8fc45a4eda5ccac4af34fa4_flowers-flower-clipart-green-flower-clipart-free-png_777-800" width="777" height="800"/>
+    </resources>
 </document>

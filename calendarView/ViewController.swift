@@ -10,14 +10,25 @@ import UIKit
 enum day {
     case Sunday, Monday, Teusday, Wednesday, Thursday, Friday, Saturday
 }
+var valueMonth : Int = 0
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    @IBAction func rightSwipe(_ sender: UISwipeGestureRecognizer) {
+        print ("Go to previous Month")
+        valueMonth -= 1
+        self.refreshView()
+    }
     
+    @IBAction func leftSwipe(_ sender: UISwipeGestureRecognizer) {
+        print ("Load the next month")
+        valueMonth += 1
+        self.refreshView()
+    }
     @IBOutlet weak var collectionView: UICollectionView!
     var numberOfEmptyCells : Int? = nil
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let date =  Date().startOfMonth()
+    func refreshView()
+    {
+        let date =  Date().month(value: valueMonth)
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "EEEE" //Wednesday, Mar 29, 2017
         let formattedDate1 = formatter1.string(from: date)
@@ -26,28 +37,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             numberOfEmptyCells = 0
         }
         if (formattedDate1 == "Monday") {
-           numberOfEmptyCells = 1
+            numberOfEmptyCells = 1
         }
         if (formattedDate1 == "Tuesday") {
-           numberOfEmptyCells = 2
+            numberOfEmptyCells = 2
         }
         if (formattedDate1 == "Wednesday") {
-          numberOfEmptyCells = 3
+            numberOfEmptyCells = 3
         }
         if (formattedDate1 == "Thursday") {
-           numberOfEmptyCells = 4
+            numberOfEmptyCells = 4
         }
         if (formattedDate1 == "Friday") {
-           numberOfEmptyCells = 5
+            numberOfEmptyCells = 5
         }
         if (formattedDate1 == "Saturday") {
-           numberOfEmptyCells = 6
+            numberOfEmptyCells = 6
         }
-        print (numberOfEmptyCells)
+        print(days)
+        self.collectionView.reloadData()
+        self.collectionView.reloadInputViews()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.refreshView()
+        }
 
     var days: [String] {
-        let daysInMonth = Date().numberOfDays()
+        let dateToShow = Date().month(value: valueMonth)
+        let daysInMonth = dateToShow.numberOfDays()
         var returnArray : [String] = []
         for i in 1...daysInMonth{
             returnArray.append(String(i))
@@ -79,7 +98,38 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     /*Reusable View*/
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoryMonthHeader", for: indexPath)
-//        (reusableView as! CategoryMonthHeader).monthLabel.text = "April"
+        for view in reusableView.subviews {
+            view.removeFromSuperview()
+        }
+        var days : [String] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+        var temp : CGFloat = 0.0
+        for i in 0..<7 {
+            var availableWidth : CGFloat!
+            var numberOfCells : Int!
+            numberOfCells = 7
+            let padding = 2
+            availableWidth = reusableView.frame.size.width - CGFloat(padding * (numberOfCells - 1))
+            let dynamicCellWidth = availableWidth / CGFloat(numberOfCells)
+            let width = dynamicCellWidth
+            let frame = CGRect.init(x: CGFloat(temp), y: reusableView.frame.size.height/2, width: width, height: reusableView.frame.size.height/2)
+            let label : UILabel = UILabel.init(frame: frame)
+            label.textAlignment = .center
+            label.text = days[i]
+            temp += width + 2.0
+            label.backgroundColor = .white
+            reusableView.addSubview(label)
+            
+            let frame1 = CGRect.init(x: reusableView.center.x - 50, y: 0, width: 100, height: reusableView.frame.size.height / 2)
+            let label1 = UILabel.init(frame: frame1)
+            let date =  Date().month(value: valueMonth)
+            let formatter1 = DateFormatter()
+            formatter1.dateFormat = "MMMM" //Wednesday, Mar 29, 2017
+            let formattedDate1 = formatter1.string(from: date)
+            label1.text = formattedDate1
+            label1.textAlignment = .center
+            reusableView.addSubview(label1)
+        }
+
         return reusableView
     }
     
@@ -111,18 +161,19 @@ extension Date {
     func endOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
-    
- 
    func numberOfDays() -> Int {
     let calendar = Calendar.current
-     let date = Date()
-     
+     let date = Date().month(value: valueMonth)
      // Calculate start and end of the current year (or month with `.month`):
-     let interval = calendar.dateInterval(of: .year, for: date)!
-     
+     let interval = calendar.dateInterval(of: .month, for: date)!
      // Compute difference in days:
      let days = calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
      return (days)
+    }
+    func month(value : Int) -> Date {
+        let calendar = Calendar.current
+          let twoDaysAgo = calendar.date(byAdding: .month, value: value, to: Date())
+            return (twoDaysAgo)!
     }
 }
 
@@ -135,34 +186,33 @@ class collectionViewCell : UICollectionViewCell {
 class CategoryMonthHeader: UICollectionReusableView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        var days : [String] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
-        var temp : CGFloat = 0.0
-        for i in 0..<7 {
-            var availableWidth : CGFloat!
-            var numberOfCells : Int!
-            numberOfCells = 7
-            let padding = 2
-            availableWidth = self.frame.size.width - CGFloat(padding * (numberOfCells - 1))
-            let dynamicCellWidth = availableWidth / CGFloat(numberOfCells)
-            let width = dynamicCellWidth
-            let frame = CGRect.init(x: CGFloat(temp), y: self.frame.size.height/2, width: width, height: self.frame.size.height/2)
-            let label : UILabel = UILabel.init(frame: frame)
-            label.textAlignment = .center
-            label.text = days[i]
-            temp += width + 2.0
-            label.backgroundColor = .white
-            self.addSubview(label)
-            
-            let frame1 = CGRect.init(x: self.center.x - 50, y: 0, width: 100, height: self.frame.size.height / 2)
-            let label1 = UILabel.init(frame: frame1)
-            let date =  Date()
-            let formatter1 = DateFormatter()
-            formatter1.dateFormat = "MMMM" //Wednesday, Mar 29, 2017
-            let formattedDate1 = formatter1.string(from: date)
-            label1.text = formattedDate1
-            label1.textAlignment = .center
-            self.addSubview(label1)
-        }
+//        var days : [String] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+//        var temp : CGFloat = 0.0
+//        for i in 0..<7 {
+//            var availableWidth : CGFloat!
+//            var numberOfCells : Int!
+//            numberOfCells = 7
+//            let padding = 2
+//            availableWidth = self.frame.size.width - CGFloat(padding * (numberOfCells - 1))
+//            let dynamicCellWidth = availableWidth / CGFloat(numberOfCells)
+//            let width = dynamicCellWidth
+//            let frame = CGRect.init(x: CGFloat(temp), y: self.frame.size.height/2, width: width, height: self.frame.size.height/2)
+//            let label : UILabel = UILabel.init(frame: frame)
+//            label.textAlignment = .center
+//            label.text = days[i]
+//            temp += width + 2.0
+//            label.backgroundColor = .white
+//            self.addSubview(label)
+//            
+//            let frame1 = CGRect.init(x: self.center.x - 50, y: 0, width: 100, height: self.frame.size.height / 2)
+//            let label1 = UILabel.init(frame: frame1)
+//            let date =  Date().month(value: valueMonth)
+//            let formatter1 = DateFormatter()
+//            formatter1.dateFormat = "MMMM" //Wednesday, Mar 29, 2017
+//            let formattedDate1 = formatter1.string(from: date)
+//            label1.text = formattedDate1
+//            label1.textAlignment = .center
+//            self.addSubview(label1)
+//        }
     }
-    
 }
