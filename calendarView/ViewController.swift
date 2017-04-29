@@ -47,10 +47,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     var days: [String] {
-        let calendar = Calendar.current
-        let date = Date()
-        let interval = calendar.dateInterval(of: .month, for: date)!
-        let daysInMonth = calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
+        let daysInMonth = Date().numberOfDays()
         var returnArray : [String] = []
         for i in 1...daysInMonth{
             returnArray.append(String(i))
@@ -75,9 +72,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.collectionViewLabel.text = days[indexPath.item]
         return cell
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print ("You have selected \(days[indexPath.item])")
+    }
     
     /*Reusable View*/
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -116,10 +113,8 @@ extension Date {
     }
     
  
-//   func numberOfDay() -> Int {
-//        
-//    }
-    /*let calendar = Calendar.current
+   func numberOfDays() -> Int {
+    let calendar = Calendar.current
      let date = Date()
      
      // Calculate start and end of the current year (or month with `.month`):
@@ -127,7 +122,8 @@ extension Date {
      
      // Compute difference in days:
      let days = calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
-     print(days)*/
+     return (days)
+    }
 }
 
 
