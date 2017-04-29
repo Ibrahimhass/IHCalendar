@@ -13,6 +13,7 @@
 		DB5B2C911EB3AF0100413BA2 /* calendarView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB5B2C8F1EB3AF0100413BA2 /* calendarView.xcdatamodeld */; };
 		DB5B2C931EB3AF0100413BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5B2C921EB3AF0100413BA2 /* Assets.xcassets */; };
 		DB5B2C961EB3AF0100413BA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5B2C941EB3AF0100413BA2 /* LaunchScreen.storyboard */; };
+		DBD2F3D81EB4A88800F2B272 /* newViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD2F3D71EB4A88800F2B272 /* newViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DB5B2C921EB3AF0100413BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB5B2C951EB3AF0100413BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB5B2C971EB3AF0100413BA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBD2F3D71EB4A88800F2B272 /* newViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				DB5B2C881EB3AF0100413BA2 /* AppDelegate.swift */,
 				DB5B2C8A1EB3AF0100413BA2 /* ViewController.swift */,
 				DB5B2C8C1EB3AF0100413BA2 /* Main.storyboard */,
+				DBD2F3D71EB4A88800F2B272 /* newViewController.swift */,
 				DB5B2C921EB3AF0100413BA2 /* Assets.xcassets */,
 				DB5B2C941EB3AF0100413BA2 /* LaunchScreen.storyboard */,
 				DB5B2C971EB3AF0100413BA2 /* Info.plist */,
@@ -143,6 +146,7 @@
 				DB5B2C8B1EB3AF0100413BA2 /* ViewController.swift in Sources */,
 				DB5B2C891EB3AF0100413BA2 /* AppDelegate.swift in Sources */,
 				DB5B2C911EB3AF0100413BA2 /* calendarView.xcdatamodeld in Sources */,
+				DBD2F3D81EB4A88800F2B272 /* newViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				DB5B2C9C1EB3AF0100413BA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

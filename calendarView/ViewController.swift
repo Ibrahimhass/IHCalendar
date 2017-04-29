@@ -25,6 +25,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     @IBOutlet weak var collectionView: UICollectionView!
     var numberOfEmptyCells : Int? = nil
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(false)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(false)
+    }
 
     func refreshView()
     {
@@ -119,14 +126,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             label.backgroundColor = .white
             reusableView.addSubview(label)
             
-            let frame1 = CGRect.init(x: reusableView.center.x - 50, y: 0, width: 100, height: reusableView.frame.size.height / 2)
+            let frame1 = CGRect.init(x: reusableView.center.x - 75, y: 0, width: 150, height: reusableView.frame.size.height / 2)
             let label1 = UILabel.init(frame: frame1)
             let date =  Date().month(value: valueMonth)
             let formatter1 = DateFormatter()
-            formatter1.dateFormat = "MMMM" //Wednesday, Mar 29, 2017
+            formatter1.dateFormat = "MMMM yyy" //Wednesday, Mar 29, 2017
             let formattedDate1 = formatter1.string(from: date)
             label1.text = formattedDate1
             label1.textAlignment = .center
+            label1.adjustsFontSizeToFitWidth = true
             reusableView.addSubview(label1)
         }
 

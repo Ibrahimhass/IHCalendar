@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina3_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6P9-XI-biq">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,14 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="b4cc992cc8fc45a4eda5ccac4af34fa4_flowers-flower-clipart-green-flower-clipart-free-png_777-800" translatesAutoresizingMaskIntoConstraints="NO" id="zGx-yq-8yc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HOK-Cx-ZoJ">
-                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="DBg-IL-Rds">
@@ -60,11 +57,12 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="collectionViewLabel" destination="nIY-P7-jMW" id="RQZ-2L-FbT"/>
+                                            <segue destination="VEz-zh-KkF" kind="show" id="E0w-39-t48"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" tag="1" contentMode="center" reuseIdentifier="CategoryMonthHeader" id="bW6-gb-hqm" customClass="CategoryMonthHeader" customModule="calendarView" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.92422693060000005" green="0.92422693060000005" blue="0.92422693060000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <gestureRecognizers/>
@@ -81,16 +79,12 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HOK-Cx-ZoJ" secondAttribute="bottom" id="3s4-BV-wsE"/>
                             <constraint firstItem="HOK-Cx-ZoJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CG0-fB-f4S"/>
-                            <constraint firstItem="zGx-yq-8yc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Kup-1g-gUA"/>
                             <constraint firstItem="HOK-Cx-ZoJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TUN-MN-Awp"/>
-                            <constraint firstItem="zGx-yq-8yc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uag-yF-neA"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zGx-yq-8yc" secondAttribute="bottom" id="ZIa-f1-HTK"/>
-                            <constraint firstAttribute="trailing" secondItem="zGx-yq-8yc" secondAttribute="trailing" id="d0p-fe-9y6"/>
                             <constraint firstAttribute="trailing" secondItem="HOK-Cx-ZoJ" secondAttribute="trailing" id="kRE-lq-0MQ"/>
                         </constraints>
                         <connections>
@@ -98,6 +92,7 @@
                             <outletCollection property="gestureRecognizers" destination="iDH-Ta-hdK" appends="YES" id="QVH-C6-pHG"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="6sN-oB-HyD"/>
                     <connections>
                         <outlet property="collectionView" destination="HOK-Cx-ZoJ" id="MRx-jv-1Le"/>
                     </connections>
@@ -114,10 +109,101 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="273.75" y="-65"/>
+            <point key="canvasLocation" x="1271.25" y="-65"/>
+        </scene>
+        <!--New View Controller-->
+        <scene sceneID="D4z-5L-TRo">
+            <objects>
+                <viewController id="VEz-zh-KkF" customClass="newViewController" customModule="calendarView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ta5-de-2u6"/>
+                        <viewControllerLayoutGuide type="bottom" id="vvE-Ap-Q1E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7wU-eu-GvA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CYz-K7-Tod">
+                                <rect key="frame" x="13" y="99" width="346" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dx-Cb-PTa">
+                                <rect key="frame" x="16" y="149" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUO-Ev-nUS">
+                                <rect key="frame" x="16" y="204" width="171" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4f-mC-xhf">
+                                <rect key="frame" x="189" y="205" width="170" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="Pn5-ia-6dz"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNv-Ng-mGg">
+                                <rect key="frame" x="16" y="292" width="339" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButton:" destination="VEz-zh-KkF" eventType="touchUpInside" id="lZQ-gJ-aHd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="R4f-mC-xhf" firstAttribute="top" secondItem="4dx-Cb-PTa" secondAttribute="bottom" constant="26" id="BUk-hX-bXc"/>
+                            <constraint firstItem="4dx-Cb-PTa" firstAttribute="top" secondItem="CYz-K7-Tod" secondAttribute="bottom" constant="20" id="Jd3-FL-xjB"/>
+                            <constraint firstItem="UUO-Ev-nUS" firstAttribute="top" secondItem="4dx-Cb-PTa" secondAttribute="bottom" constant="25" id="M1d-xN-CSW"/>
+                            <constraint firstItem="4dx-Cb-PTa" firstAttribute="trailing" secondItem="R4f-mC-xhf" secondAttribute="trailing" id="Mu1-bp-nac"/>
+                            <constraint firstItem="CYz-K7-Tod" firstAttribute="leading" secondItem="7wU-eu-GvA" secondAttribute="leadingMargin" constant="-3" id="NnS-wG-wvo"/>
+                            <constraint firstItem="CYz-K7-Tod" firstAttribute="trailing" secondItem="4dx-Cb-PTa" secondAttribute="trailing" id="OoX-g8-evj"/>
+                            <constraint firstItem="R4f-mC-xhf" firstAttribute="leading" secondItem="UUO-Ev-nUS" secondAttribute="trailing" constant="2" id="TlM-Qc-dtw"/>
+                            <constraint firstItem="CYz-K7-Tod" firstAttribute="centerX" secondItem="wNv-Ng-mGg" secondAttribute="centerX" id="WZG-BP-01c"/>
+                            <constraint firstItem="CYz-K7-Tod" firstAttribute="top" secondItem="Ta5-de-2u6" secondAttribute="bottom" constant="35" id="ii2-VE-iwz"/>
+                            <constraint firstItem="CYz-K7-Tod" firstAttribute="trailing" secondItem="7wU-eu-GvA" secondAttribute="trailingMargin" id="lPr-Uw-Ya1"/>
+                            <constraint firstItem="UUO-Ev-nUS" firstAttribute="leading" secondItem="wNv-Ng-mGg" secondAttribute="leading" id="wyo-Ot-YtY"/>
+                            <constraint firstItem="4dx-Cb-PTa" firstAttribute="leading" secondItem="UUO-Ev-nUS" secondAttribute="leading" id="xQ5-QB-chY"/>
+                            <constraint firstItem="4dx-Cb-PTa" firstAttribute="leading" secondItem="7wU-eu-GvA" secondAttribute="leadingMargin" id="zSN-Pr-PWD"/>
+                            <constraint firstItem="wNv-Ng-mGg" firstAttribute="top" secondItem="R4f-mC-xhf" secondAttribute="bottom" constant="57" id="zkJ-Kz-aHm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="departmentSelectTextField" destination="CYz-K7-Tod" id="8dD-RG-rJH"/>
+                        <outlet property="fromTimeTextField" destination="UUO-Ev-nUS" id="1on-sr-4Bw"/>
+                        <outlet property="nameTextField" destination="4dx-Cb-PTa" id="JzW-GD-cEd"/>
+                        <outlet property="totextField" destination="R4f-mC-xhf" id="iOk-O3-hCd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gnb-QD-DHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2020" y="-65.217391304347828"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uWM-rg-J4v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6P9-XI-biq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9IW-10-g9e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bgQ-hI-3Ml"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgp-G6-kFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="-65"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="b4cc992cc8fc45a4eda5ccac4af34fa4_flowers-flower-clipart-green-flower-clipart-free-png_777-800" width="777" height="800"/>
-    </resources>
 </document>
