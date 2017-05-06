@@ -35,25 +35,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let formattedDate1 = formatter1.string(from: date2)
         print (formattedDate1)
         if (formattedDate1 == "Sunday") {
-            numberOfEmptyCells = 0
+            numberOfEmptyCells = 6
         }
         if (formattedDate1 == "Monday") {
-            numberOfEmptyCells = 1
+            numberOfEmptyCells = 0
         }
         if (formattedDate1 == "Tuesday") {
-            numberOfEmptyCells = 2
+            numberOfEmptyCells = 1
         }
         if (formattedDate1 == "Wednesday") {
-            numberOfEmptyCells = 3
+            numberOfEmptyCells = 2
         }
         if (formattedDate1 == "Thursday") {
-            numberOfEmptyCells = 4
+            numberOfEmptyCells = 3
         }
         if (formattedDate1 == "Friday") {
-            numberOfEmptyCells = 5
+            numberOfEmptyCells = 4
         }
         if (formattedDate1 == "Saturday") {
-            numberOfEmptyCells = 6
+            numberOfEmptyCells = 5
         }
         print(days)
         self.collectionView.reloadData()
@@ -75,6 +75,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         var emptyArray : [String] = []
         if self.numberOfEmptyCells! > 0 {
             for _ in 0 ..< self.numberOfEmptyCells! {
+                //Get the last months of the previous Month
+                
                 emptyArray.append(" ")
             }
             return (emptyArray + returnArray)
@@ -102,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         for view in reusableView.subviews {
             view.removeFromSuperview()
         }
-        var days : [String] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+        var days : [String] = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"]
         var temp : CGFloat = 0.0
         for i in 0..<7 {
             var availableWidth : CGFloat!
@@ -116,6 +118,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let label : UILabel = UILabel.init(frame: frame)
             label.textAlignment = .center
             label.text = days[i]
+            if (label.text == "Sat" || label.text == "Sun"){
+                label.textColor = .red
+            }
             temp += width + 2.0
             label.backgroundColor = .white
             reusableView.addSubview(label)
@@ -131,7 +136,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             label1.adjustsFontSizeToFitWidth = true
             reusableView.addSubview(label1)
         }
-
         return reusableView
     }
     
