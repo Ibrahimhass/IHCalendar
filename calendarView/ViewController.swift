@@ -64,7 +64,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         self.refreshView()
         }
-
+    var advanceArrayCount : Int = 0
     var days: [String] {
         let dateToShow = Date().month(value: valueMonth)
         let daysInMonth = dateToShow.numberOfDays()
@@ -74,14 +74,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         var emptyArray : [String] = []
         if self.numberOfEmptyCells! > 0 {
-            for _ in 0 ..< self.numberOfEmptyCells! {
+            for i in 0 ..< self.numberOfEmptyCells! {
                 //Get the last months of the previous Month
-                
-                emptyArray.append(" ")
+                let date = Date().month(value: -1)
+                let numberOfDays = date.numberOfDays()
+                emptyArray.append("\(numberOfDays - i)")
             }
-            return (emptyArray + returnArray)
+//            return (emptyArray.reversed() + returnArray)
         }
-        return (returnArray)
+        var advanceArray : [String] = []
+        if (returnArray.count + emptyArray.count > 35)
+        {
+            for i in (emptyArray.count + returnArray.count) ..< 42{
+                advanceArray.append("\(i - emptyArray.count - returnArray.count + 1)")
+            }
+        }
+        if (returnArray.count + emptyArray.count <= 35) {
+            if (35 - returnArray.count + emptyArray.count >= 0){
+                for i in (emptyArray.count + returnArray.count) ..< 35{
+                    advanceArray.append("\(i - emptyArray.count - returnArray.count + 1)")
+                }
+            }
+        }
+     self.advanceArrayCount = advanceArray.count
+     return (emptyArray.reversed() + returnArray + advanceArray)
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -91,6 +107,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! collectionViewCell
+        cell.collectionViewLabel.textColor = .black
+        
+        if (indexPath.item < self.numberOfEmptyCells!){
+            cell.backgroundView?.backgroundColor = .lightGray
+            cell.collectionViewLabel.textColor = .gray
+        }
+        
+        if (indexPath.item >= days.count - self.advanceArrayCount){
+            cell.backgroundView?.backgroundColor = .lightGray
+            cell.collectionViewLabel.textColor = .gray
+        }
         cell.collectionViewLabel.text = days[indexPath.item]
         return cell
     }
