@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6P9-XI-biq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6P9-XI-biq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,8 +40,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="101" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nIY-P7-jMW">
-                                                    <rect key="frame" x="8" y="8" width="85" height="87"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nIY-P7-jMW">
+                                                    <rect key="frame" x="51" y="8" width="42" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="7nT-Np-3Ze"/>
+                                                        <constraint firstAttribute="height" constant="20" id="TWr-Kj-OgE"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -50,10 +54,8 @@
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="nIY-P7-jMW" secondAttribute="bottom" id="Cms-Ys-agl"/>
-                                            <constraint firstItem="nIY-P7-jMW" firstAttribute="leading" secondItem="9R1-A1-eDl" secondAttribute="leadingMargin" id="PZe-XJ-oew"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="nIY-P7-jMW" secondAttribute="trailing" id="qFP-kM-F9R"/>
-                                            <constraint firstItem="nIY-P7-jMW" firstAttribute="top" secondItem="9R1-A1-eDl" secondAttribute="topMargin" id="yJd-Rt-4Wz"/>
+                                            <constraint firstItem="nIY-P7-jMW" firstAttribute="trailing" secondItem="9R1-A1-eDl" secondAttribute="trailingMargin" id="kzS-Bc-GaN"/>
+                                            <constraint firstItem="nIY-P7-jMW" firstAttribute="top" secondItem="9R1-A1-eDl" secondAttribute="topMargin" id="wR6-HD-tw2"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="collectionViewLabel" destination="nIY-P7-jMW" id="RQZ-2L-FbT"/>
@@ -109,7 +111,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1271.25" y="-65"/>
+            <point key="canvasLocation" x="1271.2" y="-65.217391304347828"/>
         </scene>
         <!--New View Controller-->
         <scene sceneID="D4z-5L-TRo">

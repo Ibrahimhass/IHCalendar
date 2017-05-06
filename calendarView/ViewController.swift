@@ -26,19 +26,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionView: UICollectionView!
     var numberOfEmptyCells : Int? = nil
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(false)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(false)
-    }
-
     func refreshView()
     {
-        let date =  Date().month(value: valueMonth)
+        let date1 =  Date().month(value: valueMonth)
+        let date2 = date1.startOfMonth()
         let formatter1 = DateFormatter()
-        formatter1.dateFormat = "EEEE" //Wednesday, Mar 29, 2017
-        let formattedDate1 = formatter1.string(from: date)
+        formatter1.dateFormat = "EEEE"
+        let formattedDate1 = formatter1.string(from: date2)
         print (formattedDate1)
         if (formattedDate1 == "Sunday") {
             numberOfEmptyCells = 0
@@ -169,6 +163,7 @@ extension Date {
     func endOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
+    
    func numberOfDays() -> Int {
     let calendar = Calendar.current
      let date = Date().month(value: valueMonth)
@@ -178,9 +173,10 @@ extension Date {
      let days = calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
      return (days)
     }
+    
     func month(value : Int) -> Date {
-        let calendar = Calendar.current
-          let twoDaysAgo = calendar.date(byAdding: .month, value: value, to: Date())
+        let calendar1 = Calendar.current
+          let twoDaysAgo = calendar1.date(byAdding: .month, value: value, to: Date())
             return (twoDaysAgo)!
     }
 }
