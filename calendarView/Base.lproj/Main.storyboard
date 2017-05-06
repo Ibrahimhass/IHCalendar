@@ -68,6 +68,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <gestureRecognizers/>
+                                    <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                     <connections>
                                         <outletCollection property="gestureRecognizers" destination="iDH-Ta-hdK" appends="YES" id="EDk-li-Yi6"/>
                                         <outletCollection property="gestureRecognizers" destination="hYw-Fy-euz" appends="YES" id="bzt-An-qyE"/>

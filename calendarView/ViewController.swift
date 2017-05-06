@@ -26,6 +26,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionView: UICollectionView!
     var numberOfEmptyCells : Int? = nil
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        for v in view.subviews{
+            if v.tag == 1001 {
+                v.removeFromSuperview()
+            }
+        }
+    }
     func refreshView()
     {
         let date1 =  Date().month(value: valueMonth)
@@ -58,6 +66,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print(days)
         self.collectionView.reloadData()
         self.collectionView.reloadInputViews()
+        self.collectionView.scrollToItem(at: IndexPath.init(row: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     override func viewDidLoad() {
@@ -122,7 +131,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print ("You have selected \(days[indexPath.item])")
+//        print ("You have selected \(days[indexPath.item])")
+//        guard let validCell = collectionView.cellForItem(at: indexPath) as! collectionViewCell else {return}
+        guard let validCell = collectionView.cellForItem(at: indexPath) as? collectionViewCell else {return}
+        let point = validCell.center.y
+        let upperY = point - validCell.frame.size.height / 2.0
+        print (upperY)
+        let grayView = UIView.init(frame: CGRect.init(x: 0, y: upperY + 100, width: collectionView.frame.size.width, height: validCell.frame.size.height))
+        grayView.backgroundColor = .lightGray
+        grayView.alpha = 0.5
+        grayView.tag = 1001
+        self.view.addSubview(grayView)
+
+        
     }
     
     /*Reusable View*/
@@ -165,17 +186,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         return reusableView
     }
-    
-    
     /*Flow Layout Delegate*/
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         var availableWidth : CGFloat!
         var numberOfCells : Int!
         numberOfCells = 7
         let padding = 2
         availableWidth = collectionView.frame.size.width - CGFloat(padding * (numberOfCells - 1))
         let dynamicCellWidth = availableWidth / CGFloat(numberOfCells)
-        let cellHeight : CGFloat = collectionView.frame.size.height / 7
+        var cellHeight : CGFloat = 0.0
+        if (collectionView.numberOfItems(inSection: 0) == 42)
+        {
+            cellHeight = collectionView.frame.size.height / 8
+        }
+        if (collectionView.numberOfItems(inSection: 0) == 35){
+            cellHeight = collectionView.frame.size.height / 7
+        }
         let dynamicCellSize = CGSize.init(width: dynamicCellWidth, height: cellHeight)
         return (dynamicCellSize)
     }
